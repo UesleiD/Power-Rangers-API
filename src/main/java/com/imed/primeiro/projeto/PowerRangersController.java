@@ -1,7 +1,5 @@
 package com.imed.primeiro.projeto;
 
-
-
 import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,9 +8,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
+@RequestMapping(value="PowerRangers")
 class PowerRangersController {
 
   private final PowerRangersRepository repository;
@@ -21,22 +22,16 @@ class PowerRangersController {
     this.repository = repository;
   }
 
-
-  // Aggregate root
-  // tag::get-aggregate-root[]
   @GetMapping("/PowerRangers")
   List<PowerRangers> all() {
     return repository.findAll();
   }
-  // end::get-aggregate-root[]
 
   @PostMapping("/PowerRangers")
   PowerRangers newPowerRangers(@RequestBody PowerRangers newPowerRangers) {
     return repository.save(newPowerRangers);
   }
 
-  // Single item
-  
   @GetMapping("/PowerRangers/{id}")
   PowerRangers one(@PathVariable Long id) {
     
