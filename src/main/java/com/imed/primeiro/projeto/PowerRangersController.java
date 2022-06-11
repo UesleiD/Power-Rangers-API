@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(value="PowerRangers")
 class PowerRangersController {
 
   private final PowerRangersRepository repository;
